@@ -1,0 +1,302 @@
+class Clock 
+{
+    field int h, m, s, cx, cy;
+
+    field int r;
+
+    constructor Clock new(int radius) 
+    {
+        var int i, inc;
+        let cx = radius;
+        let cy = radius;
+        let r = radius;
+
+        return this;
+    }
+    
+    method void draw_static_clock()
+    {
+        var int x, y, offset, step;
+        // //upper half
+        let y = r;
+        let offset = 7;
+        
+        while(y > 0)
+        {  
+            let x = Math.sqrt(Math.multiply(r, r) - Math.multiply(y, y));
+            do Screen.drawPixel(cx - x, r - y);
+            do Screen.drawPixel(cx + x, r - y);
+
+            let y = y - 1;
+        }
+        do Screen.drawPixel(1, cy);
+        do Screen.drawPixel(Math.multiply(2, r) - 1, cy);
+
+        //lower half
+        let y = r;
+        
+        while(y > 0)
+        {  
+            let x = Math.sqrt(Math.multiply(r, r) - Math.multiply(y, y));
+            do Screen.drawPixel(cx - x, y + r);
+            do Screen.drawPixel(cx + x, y + r);
+
+            let y = y - 1;
+        }
+
+        //center
+        do Screen.drawCircle(cx,cy,2);
+
+        //12
+        do Screen.drawCircle(cx , offset , 2);
+
+        //3
+        do Screen.drawCircle(cx + ( r - offset) - 1, cy, 2);
+
+        //6
+        do Screen.drawCircle(cx , cy + ( r - offset), 2);
+
+        //9
+        do Screen.drawCircle(offset + 1, cy, 2);
+
+
+        // //upper half hours
+        let y = r;
+        let step = Math.divide(r, 15);
+        
+        while(y > 0)
+        {  
+            if(~(y = r))
+            {
+                if( (y = Math.multiply(5,step)) | (y = Math.multiply(10,step)))
+                {
+                    let x = Math.sqrt(Math.multiply(r, r) - Math.multiply(y, y));
+                    do Screen.drawCircle(cx - x + 4, r - y + 4,1);
+                    do Screen.drawCircle(cx + x - 4, r - y + 4,1);
+                }
+                else
+                {
+                    let x = Math.sqrt(Math.multiply(r, r) - Math.multiply(y, y));
+                    do Screen.drawPixel(cx - x + 4, r - y + 4);
+                    do Screen.drawPixel(cx + x - 4, r - y + 4);
+                }
+            }
+            let y = y - step;
+        }
+        //lower half
+        let y = r;
+        
+        while(y > 0)
+        {  
+            if(~(y = r))
+            {
+                if( (y = Math.multiply(5,step)) | (y = Math.multiply(10,step)))
+                {
+                    let x = Math.sqrt(Math.multiply(r, r) - Math.multiply(y, y));
+                    do Screen.drawCircle(cx - x + 4, r + y - 4,1);
+                    do Screen.drawCircle(cx + x - 4, r + y - 4,1);
+                }
+                else
+                {
+                    let x = Math.sqrt(Math.multiply(r, r) - Math.multiply(y, y));
+                    do Screen.drawPixel(cx - x + 4, r + y - 4);
+                    do Screen.drawPixel(cx + x - 4, r + y - 4);
+                }
+                
+            }
+            let y = y - step;
+        }
+
+        //SEKUNDARA
+        //prvi kvadrant
+        if((s > 0) & (s < 15))
+        {
+            let y = r - Math.multiply(step, s);
+            let x = Math.sqrt(Math.multiply(r, r) - Math.multiply(y, y));
+            do Screen.drawLine(cx, cy, cx + x - 2, r - y + 2);
+        }
+        if(s = 15)
+        {
+            do Screen.drawLine(cx, cy, cx +  r , cy);
+        }
+
+        //cetvrti kvadrant
+        if((s > 15) & (s<30))
+        {
+            let y = r + Math.multiply(step, (s-15));
+            let x = Math.sqrt(Math.multiply(r, r) - Math.multiply(Math.multiply(step, (s-15)), Math.multiply(step, (s-15))));
+            do Screen.drawLine(cx, cy, cx + x - 2, y + 2);
+        }
+        if(s = 30)
+        {
+            do Screen.drawLine(cx, cy, cx , cy +  r );
+        }
+
+        //treci kvadrant
+        if((s > 30) & (s<45))
+        {
+            let y = Math.multiply(2,r) - Math.multiply(step, (s-30));
+            let x = Math.sqrt(Math.multiply(r, r) - Math.multiply(r - Math.multiply(step, (s-30)), r - Math.multiply(step, (s-30))));
+            do Screen.drawLine(cx, cy, cx - x + 2, y + 2);
+        }
+        if(s = 45)
+        {
+            do Screen.drawLine(cx, cy,  0, cy);
+        }
+
+        //drugi kvadrant
+        if((s > 45) & (s < 60))
+        {
+            let y = r - Math.multiply(step, (s-45));
+            let x = Math.sqrt(Math.multiply(r, r) - Math.multiply(Math.multiply(step, (s-45)), Math.multiply(step, (s-45))));
+            do Screen.drawLine(cx, cy, cx - x + 2,  y + 2);
+        }
+        if(s = 0)
+        {
+            do Screen.drawLine(cx, cy, cx , 0);
+        }
+
+
+        //MINUTARA
+        //prvi kvadrant
+        if((m > 0) & (m < 15))
+        {
+            let y = r - Math.multiply(step, m);
+            let x = Math.sqrt(Math.multiply(r, r) - Math.multiply(y, y));
+            do Screen.drawLine(cx, cy, cx + x - 2, r - y + 2);
+        }
+        if(m = 15)
+        {
+            do Screen.drawLine(cx, cy, cx +  r , cy);
+        }
+
+        //cetvrti kvadrant
+        if((m > 15) & (m<30))
+        {
+            let y = r + Math.multiply(step, (m-15));
+            let x = Math.sqrt(Math.multiply(r, r) - Math.multiply(Math.multiply(step, (m-15)), Math.multiply(step, (m-15))));
+            do Screen.drawLine(cx, cy, cx + x - 2, y + 2);
+        }
+        if(m = 30)
+        {
+            do Screen.drawLine(cx, cy, cx , cy +  r );
+        }
+
+        //treci kvadrant
+        if((m > 30) & (m<45))
+        {
+            let y = Math.multiply(2,r) - Math.multiply(step, (m-30));
+            let x = Math.sqrt(Math.multiply(r, r) - Math.multiply(r - Math.multiply(step, (m-30)), r - Math.multiply(step, (m-30))));
+            do Screen.drawLine(cx, cy, cx - x + 2, y + 2);
+        }
+        if(m = 45)
+        {
+            do Screen.drawLine(cx, cy,  0, cy);
+        }
+
+        //drugi kvadrant
+        if((m > 45) & (m < 60))
+        {
+            let y = r - Math.multiply(step, (m-45));
+            let x = Math.sqrt(Math.multiply(r, r) - Math.multiply(Math.multiply(step, (m-45)), Math.multiply(step, (m-45))));
+            do Screen.drawLine(cx, cy, cx - x + 2,  y + 2);
+        }
+        if(m = 0)
+        {
+            do Screen.drawLine(cx, cy, cx , 0);
+        }
+
+        //SATARA
+        //prvi kvadrant
+        if((h > 0) & (h < 15))
+        {
+            let y = r - Math.multiply(step, h);
+            let x = Math.sqrt(Math.multiply(r, r) - Math.multiply(y, y));
+            do Screen.drawLine(cx, cy, cx + x - 2, r - y + 2);
+        }
+        if(h = 15)
+        {
+            do Screen.drawLine(cx, cy, cx +  r , cy);
+        }
+
+        //cetvrti kvadrant
+        if((h > 15) & (h<30))
+        {
+            let y = r + Math.multiply(step, (h-15));
+            let x = Math.sqrt(Math.multiply(r, r) - Math.multiply(Math.multiply(step, (h-15)), Math.multiply(step, (h-15))));
+            do Screen.drawLine(cx, cy, cx + x - 2, y + 2);
+        }
+        if(h = 30)
+        {
+            do Screen.drawLine(cx, cy, cx , cy +  r );
+        }
+
+        //treci kvadrant
+        if((h > 30) & (h<45))
+        {
+            let y = Math.multiply(2,r) - Math.multiply(step, (h-30));
+            let x = Math.sqrt(Math.multiply(r, r) - Math.multiply(r - Math.multiply(step, (h-30)), r - Math.multiply(step, (h-30))));
+            do Screen.drawLine(cx, cy, cx - x + 2, y + 2);
+        }
+        if(h = 45)
+        {
+            do Screen.drawLine(cx, cy,  0, cy);
+        }
+
+        //drugi kvadrant
+        if((h > 45) & (h < 60))
+        {
+            let y = r - Math.multiply(step, (h-45));
+            let x = Math.sqrt(Math.multiply(r, r) - Math.multiply(Math.multiply(step, (h-45)), Math.multiply(step, (h-45))));
+            do Screen.drawLine(cx, cy, cx - x + 2,  y + 2);
+        }
+        if(h = 0)
+        {
+            do Screen.drawLine(cx, cy, cx , 0);
+        }
+        
+       
+    
+        
+
+        return;
+    }
+
+    method void draw() {
+        let h = 0;
+        let m = 0;
+        let s = 0;
+        
+
+        
+
+        while(true)
+        {
+            if(h = 12)
+            {
+                let h = 0;
+            }
+            if(m = 60)
+            {
+                let h = h + 1;
+                let m = 0;
+            }
+            if(s = 60)
+            {
+                let m = m + 1;
+                let s = 0;
+            }
+
+            do draw_static_clock();
+            
+
+
+            let s = s + 1;
+            do Sys.wait(200);
+            do Screen.clearScreen();
+        }
+
+
+    return;
+  }
+}

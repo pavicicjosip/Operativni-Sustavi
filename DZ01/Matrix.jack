@@ -1,0 +1,197 @@
+class Matrix
+{
+    field Array M;
+    field int dim;
+
+    constructor Matrix new(int n)
+    {
+        var int i, j;
+        var Array row;
+        let M = Array.new(n);
+        
+        let dim = n;
+        
+
+        let i = 0;
+        while(i < n)
+        {
+            let row = Array.new(n);
+            let j = 0;
+            while(j < n)
+            {
+                let row[j] = 0;
+                let j = j + 1;
+            }
+
+
+            let M[i] = row;
+            let i = i + 1;
+        }
+                
+        return this;
+    }
+
+    method int getElem(int i, int j)
+    {
+        var Array row;
+        let row = M[i];
+        return row[j];
+    }
+
+    method void setElem(int v, int i, int j)
+    {
+        var Array temp;
+        let temp = M[i];
+        let temp[j] = v;
+        return;
+    }
+
+    method Matrix add (Matrix M1)
+    {
+        var int i, j;
+        var Matrix M2;
+        
+        let M2 = Matrix.new(dim);
+            
+        let i = 0;
+        while(i < dim)
+        {
+            let j = 0;
+            while(j < dim)
+            {
+                do M2.setElem(getElem(i, j) + M1.getElem(i, j), i, j);
+                let j = j + 1;
+            }
+
+            let i = i + 1;
+        }
+
+        return M2;
+    }
+
+    method void multScalar(int scalar)
+    {
+        var int i, j;
+            
+        let i = 0;
+        while(i < dim)
+        {
+            let j = 0;
+            while(j < dim)
+            {
+                do setElem(getElem(i, j) * scalar, i, j);
+                let j = j + 1;
+            }
+
+            let i = i + 1;
+        }
+
+        return;
+    }
+
+    method Matrix multMat(Matrix M1)
+    {
+        var Matrix M2;
+        var int i, j, k;
+
+        let i = 0;
+        let M2 = Matrix.new(dim);
+
+        while(i < dim)
+        {
+            let j = 0;
+            while(j < dim)
+            {
+                let k = 0;
+                while(k < dim)
+                {
+                    do M2.setElem( M2.getElem(i,j) + (getElem(i,k) * M1.getElem(k,j)), i, j);
+                       
+                    let k = k + 1;
+                }
+
+                let j = j + 1;
+            }
+
+            let i = i + 1;
+        }
+        return M2;
+    }
+
+    method int norm()
+    {
+        var int i, j, sum;
+        let sum = 0;
+
+        let i = 0;
+        while(i < dim)
+        {
+            let j = 0;
+            while(j < dim)
+            {
+                let sum = sum + (getElem(i,j) * getElem(i,j));
+                let j = j + 1;
+            }
+            let i = i + 1;
+        }
+
+        return Math.sqrt(sum);
+    }
+
+    function Matrix eye(int n)
+    {
+        var Matrix I;
+        var int i;
+
+        let I = Matrix.new(n);
+        
+        let i = 0;
+        while(i < n)
+        {
+            do I.setElem(1, i, i);
+            let i = i + 1;
+        }
+        
+        return I;
+    }
+
+    method void show()
+    {
+        var int i, j;
+        let i = 0;
+        while(i < dim)
+        {
+            let j = 0;
+            while(j < dim)
+            {
+                do Output.printInt(getElem(i,j));
+                do Output.printString(" ");
+                let j = j + 1;
+            }
+            do Output.println();
+            let i = i + 1;
+        }
+        return;
+    }
+
+    method void dispose ()
+    {
+        var int i;
+        var Array temp;
+
+        let i = 0;
+        while (i < dim)
+        {
+            let temp = M[i];
+            do temp.dispose();
+
+            let i = i + 1;
+        }
+
+        do M.dispose();
+
+        do Memory.deAlloc(this);
+
+        return;
+    }
+}

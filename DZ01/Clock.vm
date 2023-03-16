@@ -1,0 +1,1167 @@
+function Clock.new 2
+push constant 6
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 3
+push argument 0
+pop this 4
+push argument 0
+pop this 5
+push pointer 0
+return
+function Clock.draw_static_clock 4
+push argument 0
+pop pointer 0
+push this 5
+pop local 1
+push constant 7
+pop local 2
+label WHILE_EXP0
+push local 1
+push constant 0
+gt
+not
+if-goto WHILE_END0
+push this 5
+push this 5
+call Math.multiply 2
+push local 1
+push local 1
+call Math.multiply 2
+sub
+call Math.sqrt 1
+pop local 0
+push this 3
+push local 0
+sub
+push this 5
+push local 1
+sub
+call Screen.drawPixel 2
+pop temp 0
+push this 3
+push local 0
+add
+push this 5
+push local 1
+sub
+call Screen.drawPixel 2
+pop temp 0
+push local 1
+push constant 1
+sub
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push constant 1
+push this 4
+call Screen.drawPixel 2
+pop temp 0
+push constant 2
+push this 5
+call Math.multiply 2
+push constant 1
+sub
+push this 4
+call Screen.drawPixel 2
+pop temp 0
+push this 5
+pop local 1
+label WHILE_EXP1
+push local 1
+push constant 0
+gt
+not
+if-goto WHILE_END1
+push this 5
+push this 5
+call Math.multiply 2
+push local 1
+push local 1
+call Math.multiply 2
+sub
+call Math.sqrt 1
+pop local 0
+push this 3
+push local 0
+sub
+push local 1
+push this 5
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 3
+push local 0
+add
+push local 1
+push this 5
+add
+call Screen.drawPixel 2
+pop temp 0
+push local 1
+push constant 1
+sub
+pop local 1
+goto WHILE_EXP1
+label WHILE_END1
+push this 3
+push this 4
+push constant 2
+call Screen.drawCircle 3
+pop temp 0
+push this 3
+push local 2
+push constant 2
+call Screen.drawCircle 3
+pop temp 0
+push this 3
+push this 5
+push local 2
+sub
+add
+push constant 1
+sub
+push this 4
+push constant 2
+call Screen.drawCircle 3
+pop temp 0
+push this 3
+push this 4
+push this 5
+push local 2
+sub
+add
+push constant 2
+call Screen.drawCircle 3
+pop temp 0
+push local 2
+push constant 1
+add
+push this 4
+push constant 2
+call Screen.drawCircle 3
+pop temp 0
+push this 5
+pop local 1
+push this 5
+push constant 15
+call Math.divide 2
+pop local 3
+label WHILE_EXP2
+push local 1
+push constant 0
+gt
+not
+if-goto WHILE_END2
+push local 1
+push this 5
+eq
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 1
+push constant 5
+push local 3
+call Math.multiply 2
+eq
+push local 1
+push constant 10
+push local 3
+call Math.multiply 2
+eq
+or
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 5
+push this 5
+call Math.multiply 2
+push local 1
+push local 1
+call Math.multiply 2
+sub
+call Math.sqrt 1
+pop local 0
+push this 3
+push local 0
+sub
+push constant 4
+add
+push this 5
+push local 1
+sub
+push constant 4
+add
+push constant 1
+call Screen.drawCircle 3
+pop temp 0
+push this 3
+push local 0
+add
+push constant 4
+sub
+push this 5
+push local 1
+sub
+push constant 4
+add
+push constant 1
+call Screen.drawCircle 3
+pop temp 0
+goto IF_END1
+label IF_FALSE1
+push this 5
+push this 5
+call Math.multiply 2
+push local 1
+push local 1
+call Math.multiply 2
+sub
+call Math.sqrt 1
+pop local 0
+push this 3
+push local 0
+sub
+push constant 4
+add
+push this 5
+push local 1
+sub
+push constant 4
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 3
+push local 0
+add
+push constant 4
+sub
+push this 5
+push local 1
+sub
+push constant 4
+add
+call Screen.drawPixel 2
+pop temp 0
+label IF_END1
+label IF_FALSE0
+push local 1
+push local 3
+sub
+pop local 1
+goto WHILE_EXP2
+label WHILE_END2
+push this 5
+pop local 1
+label WHILE_EXP3
+push local 1
+push constant 0
+gt
+not
+if-goto WHILE_END3
+push local 1
+push this 5
+eq
+not
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push local 1
+push constant 5
+push local 3
+call Math.multiply 2
+eq
+push local 1
+push constant 10
+push local 3
+call Math.multiply 2
+eq
+or
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push this 5
+push this 5
+call Math.multiply 2
+push local 1
+push local 1
+call Math.multiply 2
+sub
+call Math.sqrt 1
+pop local 0
+push this 3
+push local 0
+sub
+push constant 4
+add
+push this 5
+push local 1
+add
+push constant 4
+sub
+push constant 1
+call Screen.drawCircle 3
+pop temp 0
+push this 3
+push local 0
+add
+push constant 4
+sub
+push this 5
+push local 1
+add
+push constant 4
+sub
+push constant 1
+call Screen.drawCircle 3
+pop temp 0
+goto IF_END3
+label IF_FALSE3
+push this 5
+push this 5
+call Math.multiply 2
+push local 1
+push local 1
+call Math.multiply 2
+sub
+call Math.sqrt 1
+pop local 0
+push this 3
+push local 0
+sub
+push constant 4
+add
+push this 5
+push local 1
+add
+push constant 4
+sub
+call Screen.drawPixel 2
+pop temp 0
+push this 3
+push local 0
+add
+push constant 4
+sub
+push this 5
+push local 1
+add
+push constant 4
+sub
+call Screen.drawPixel 2
+pop temp 0
+label IF_END3
+label IF_FALSE2
+push local 1
+push local 3
+sub
+pop local 1
+goto WHILE_EXP3
+label WHILE_END3
+push this 2
+push constant 0
+gt
+push this 2
+push constant 15
+lt
+and
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push this 5
+push local 3
+push this 2
+call Math.multiply 2
+sub
+pop local 1
+push this 5
+push this 5
+call Math.multiply 2
+push local 1
+push local 1
+call Math.multiply 2
+sub
+call Math.sqrt 1
+pop local 0
+push this 3
+push this 4
+push this 3
+push local 0
+add
+push constant 2
+sub
+push this 5
+push local 1
+sub
+push constant 2
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE4
+push this 2
+push constant 15
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push this 3
+push this 4
+push this 3
+push this 5
+add
+push this 4
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE5
+push this 2
+push constant 15
+gt
+push this 2
+push constant 30
+lt
+and
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push this 5
+push local 3
+push this 2
+push constant 15
+sub
+call Math.multiply 2
+add
+pop local 1
+push this 5
+push this 5
+call Math.multiply 2
+push local 3
+push this 2
+push constant 15
+sub
+call Math.multiply 2
+push local 3
+push this 2
+push constant 15
+sub
+call Math.multiply 2
+call Math.multiply 2
+sub
+call Math.sqrt 1
+pop local 0
+push this 3
+push this 4
+push this 3
+push local 0
+add
+push constant 2
+sub
+push local 1
+push constant 2
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE6
+push this 2
+push constant 30
+eq
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push this 3
+push this 4
+push this 3
+push this 4
+push this 5
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE7
+push this 2
+push constant 30
+gt
+push this 2
+push constant 45
+lt
+and
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push constant 2
+push this 5
+call Math.multiply 2
+push local 3
+push this 2
+push constant 30
+sub
+call Math.multiply 2
+sub
+pop local 1
+push this 5
+push this 5
+call Math.multiply 2
+push this 5
+push local 3
+push this 2
+push constant 30
+sub
+call Math.multiply 2
+sub
+push this 5
+push local 3
+push this 2
+push constant 30
+sub
+call Math.multiply 2
+sub
+call Math.multiply 2
+sub
+call Math.sqrt 1
+pop local 0
+push this 3
+push this 4
+push this 3
+push local 0
+sub
+push constant 2
+add
+push local 1
+push constant 2
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE8
+push this 2
+push constant 45
+eq
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push this 3
+push this 4
+push constant 0
+push this 4
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE9
+push this 2
+push constant 45
+gt
+push this 2
+push constant 60
+lt
+and
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push this 5
+push local 3
+push this 2
+push constant 45
+sub
+call Math.multiply 2
+sub
+pop local 1
+push this 5
+push this 5
+call Math.multiply 2
+push local 3
+push this 2
+push constant 45
+sub
+call Math.multiply 2
+push local 3
+push this 2
+push constant 45
+sub
+call Math.multiply 2
+call Math.multiply 2
+sub
+call Math.sqrt 1
+pop local 0
+push this 3
+push this 4
+push this 3
+push local 0
+sub
+push constant 2
+add
+push local 1
+push constant 2
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE10
+push this 2
+push constant 0
+eq
+if-goto IF_TRUE11
+goto IF_FALSE11
+label IF_TRUE11
+push this 3
+push this 4
+push this 3
+push constant 0
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE11
+push this 1
+push constant 0
+gt
+push this 1
+push constant 15
+lt
+and
+if-goto IF_TRUE12
+goto IF_FALSE12
+label IF_TRUE12
+push this 5
+push local 3
+push this 1
+call Math.multiply 2
+sub
+pop local 1
+push this 5
+push this 5
+call Math.multiply 2
+push local 1
+push local 1
+call Math.multiply 2
+sub
+call Math.sqrt 1
+pop local 0
+push this 3
+push this 4
+push this 3
+push local 0
+add
+push constant 2
+sub
+push this 5
+push local 1
+sub
+push constant 2
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE12
+push this 1
+push constant 15
+eq
+if-goto IF_TRUE13
+goto IF_FALSE13
+label IF_TRUE13
+push this 3
+push this 4
+push this 3
+push this 5
+add
+push this 4
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE13
+push this 1
+push constant 15
+gt
+push this 1
+push constant 30
+lt
+and
+if-goto IF_TRUE14
+goto IF_FALSE14
+label IF_TRUE14
+push this 5
+push local 3
+push this 1
+push constant 15
+sub
+call Math.multiply 2
+add
+pop local 1
+push this 5
+push this 5
+call Math.multiply 2
+push local 3
+push this 1
+push constant 15
+sub
+call Math.multiply 2
+push local 3
+push this 1
+push constant 15
+sub
+call Math.multiply 2
+call Math.multiply 2
+sub
+call Math.sqrt 1
+pop local 0
+push this 3
+push this 4
+push this 3
+push local 0
+add
+push constant 2
+sub
+push local 1
+push constant 2
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE14
+push this 1
+push constant 30
+eq
+if-goto IF_TRUE15
+goto IF_FALSE15
+label IF_TRUE15
+push this 3
+push this 4
+push this 3
+push this 4
+push this 5
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE15
+push this 1
+push constant 30
+gt
+push this 1
+push constant 45
+lt
+and
+if-goto IF_TRUE16
+goto IF_FALSE16
+label IF_TRUE16
+push constant 2
+push this 5
+call Math.multiply 2
+push local 3
+push this 1
+push constant 30
+sub
+call Math.multiply 2
+sub
+pop local 1
+push this 5
+push this 5
+call Math.multiply 2
+push this 5
+push local 3
+push this 1
+push constant 30
+sub
+call Math.multiply 2
+sub
+push this 5
+push local 3
+push this 1
+push constant 30
+sub
+call Math.multiply 2
+sub
+call Math.multiply 2
+sub
+call Math.sqrt 1
+pop local 0
+push this 3
+push this 4
+push this 3
+push local 0
+sub
+push constant 2
+add
+push local 1
+push constant 2
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE16
+push this 1
+push constant 45
+eq
+if-goto IF_TRUE17
+goto IF_FALSE17
+label IF_TRUE17
+push this 3
+push this 4
+push constant 0
+push this 4
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE17
+push this 1
+push constant 45
+gt
+push this 1
+push constant 60
+lt
+and
+if-goto IF_TRUE18
+goto IF_FALSE18
+label IF_TRUE18
+push this 5
+push local 3
+push this 1
+push constant 45
+sub
+call Math.multiply 2
+sub
+pop local 1
+push this 5
+push this 5
+call Math.multiply 2
+push local 3
+push this 1
+push constant 45
+sub
+call Math.multiply 2
+push local 3
+push this 1
+push constant 45
+sub
+call Math.multiply 2
+call Math.multiply 2
+sub
+call Math.sqrt 1
+pop local 0
+push this 3
+push this 4
+push this 3
+push local 0
+sub
+push constant 2
+add
+push local 1
+push constant 2
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE18
+push this 1
+push constant 0
+eq
+if-goto IF_TRUE19
+goto IF_FALSE19
+label IF_TRUE19
+push this 3
+push this 4
+push this 3
+push constant 0
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE19
+push this 0
+push constant 0
+gt
+push this 0
+push constant 15
+lt
+and
+if-goto IF_TRUE20
+goto IF_FALSE20
+label IF_TRUE20
+push this 5
+push local 3
+push this 0
+call Math.multiply 2
+sub
+pop local 1
+push this 5
+push this 5
+call Math.multiply 2
+push local 1
+push local 1
+call Math.multiply 2
+sub
+call Math.sqrt 1
+pop local 0
+push this 3
+push this 4
+push this 3
+push local 0
+add
+push constant 2
+sub
+push this 5
+push local 1
+sub
+push constant 2
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE20
+push this 0
+push constant 15
+eq
+if-goto IF_TRUE21
+goto IF_FALSE21
+label IF_TRUE21
+push this 3
+push this 4
+push this 3
+push this 5
+add
+push this 4
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE21
+push this 0
+push constant 15
+gt
+push this 0
+push constant 30
+lt
+and
+if-goto IF_TRUE22
+goto IF_FALSE22
+label IF_TRUE22
+push this 5
+push local 3
+push this 0
+push constant 15
+sub
+call Math.multiply 2
+add
+pop local 1
+push this 5
+push this 5
+call Math.multiply 2
+push local 3
+push this 0
+push constant 15
+sub
+call Math.multiply 2
+push local 3
+push this 0
+push constant 15
+sub
+call Math.multiply 2
+call Math.multiply 2
+sub
+call Math.sqrt 1
+pop local 0
+push this 3
+push this 4
+push this 3
+push local 0
+add
+push constant 2
+sub
+push local 1
+push constant 2
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE22
+push this 0
+push constant 30
+eq
+if-goto IF_TRUE23
+goto IF_FALSE23
+label IF_TRUE23
+push this 3
+push this 4
+push this 3
+push this 4
+push this 5
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE23
+push this 0
+push constant 30
+gt
+push this 0
+push constant 45
+lt
+and
+if-goto IF_TRUE24
+goto IF_FALSE24
+label IF_TRUE24
+push constant 2
+push this 5
+call Math.multiply 2
+push local 3
+push this 0
+push constant 30
+sub
+call Math.multiply 2
+sub
+pop local 1
+push this 5
+push this 5
+call Math.multiply 2
+push this 5
+push local 3
+push this 0
+push constant 30
+sub
+call Math.multiply 2
+sub
+push this 5
+push local 3
+push this 0
+push constant 30
+sub
+call Math.multiply 2
+sub
+call Math.multiply 2
+sub
+call Math.sqrt 1
+pop local 0
+push this 3
+push this 4
+push this 3
+push local 0
+sub
+push constant 2
+add
+push local 1
+push constant 2
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE24
+push this 0
+push constant 45
+eq
+if-goto IF_TRUE25
+goto IF_FALSE25
+label IF_TRUE25
+push this 3
+push this 4
+push constant 0
+push this 4
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE25
+push this 0
+push constant 45
+gt
+push this 0
+push constant 60
+lt
+and
+if-goto IF_TRUE26
+goto IF_FALSE26
+label IF_TRUE26
+push this 5
+push local 3
+push this 0
+push constant 45
+sub
+call Math.multiply 2
+sub
+pop local 1
+push this 5
+push this 5
+call Math.multiply 2
+push local 3
+push this 0
+push constant 45
+sub
+call Math.multiply 2
+push local 3
+push this 0
+push constant 45
+sub
+call Math.multiply 2
+call Math.multiply 2
+sub
+call Math.sqrt 1
+pop local 0
+push this 3
+push this 4
+push this 3
+push local 0
+sub
+push constant 2
+add
+push local 1
+push constant 2
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE26
+push this 0
+push constant 0
+eq
+if-goto IF_TRUE27
+goto IF_FALSE27
+label IF_TRUE27
+push this 3
+push this 4
+push this 3
+push constant 0
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE27
+push constant 0
+return
+function Clock.draw 0
+push argument 0
+pop pointer 0
+push constant 0
+pop this 0
+push constant 0
+pop this 1
+push constant 0
+pop this 2
+label WHILE_EXP0
+push constant 0
+not
+not
+if-goto WHILE_END0
+push this 0
+push constant 12
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+pop this 0
+label IF_FALSE0
+push this 1
+push constant 60
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 0
+push constant 1
+add
+pop this 0
+push constant 0
+pop this 1
+label IF_FALSE1
+push this 2
+push constant 60
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 1
+push constant 1
+add
+pop this 1
+push constant 0
+pop this 2
+label IF_FALSE2
+push pointer 0
+call Clock.draw_static_clock 1
+pop temp 0
+push this 2
+push constant 1
+add
+pop this 2
+push constant 200
+call Sys.wait 1
+pop temp 0
+call Screen.clearScreen 0
+pop temp 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return

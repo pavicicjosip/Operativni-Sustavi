@@ -1,0 +1,64 @@
+class Main
+{
+    function void main()
+    {
+        // //zad1
+        // var String mathExpression;
+        // let mathExpression = "{(1 + [x + {y])} / (2 +6*[4-2])}";
+        // do Output.printString(ValidateParentheses.validate(mathExpression));
+
+        // //zad2
+        // var Matrix mat1, mat2, mat_added;
+        // let mat1 = Matrix.new(3);
+        // do mat1.setElem(4, 0, 1);
+        // let mat2 = Matrix.new(3);
+        // do mat2.setElem(4, 0, 1);
+        // do mat2.setElem(2, 1, 0);
+        // do mat2.setElem(3, 2, 1);
+        // let mat_added = mat1.add(mat2);
+        // do mat_added.show();
+
+        // //zad3
+        // //a)
+        // var Matrix mat;
+        // var int s;
+        // let mat = Matrix.new(4);
+        // do mat.setElem(1,1,1);
+        // do mat.multScalar(5);
+        // do mat.show();
+        // //b)
+        // var Matrix mat, mat1, mat2;
+        // let mat = Matrix.new(2);
+        // do mat.setElem(2, 0,0);
+        // do mat.setElem(3, 0,1);
+        // do mat.setElem(5, 1,0);
+        // do mat.setElem(12, 1,1);
+        // do mat.show();
+
+        // let mat1 = Matrix.new(2);
+        // do mat1.setElem(4, 0,0);
+        // do mat1.setElem(1, 0,1);
+        // do mat1.setElem(2, 1,0);
+        // do mat1.setElem(7, 1,1);
+        // do mat1.show();
+
+        // let mat2 = mat.multMat(mat1);
+        // do mat2.show();
+
+        // //zad4 norm
+        // do Output.printInt(mat2.norm());
+
+        //zad5
+        // var Matrix mat;
+        // let mat = Matrix.eye(3);
+        // do mat.show();
+
+
+        var Clock clock;
+        let clock = Clock.new(60);
+        do clock.draw();
+
+        
+        return;
+    }
+}
