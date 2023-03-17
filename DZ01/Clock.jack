@@ -292,7 +292,7 @@ class Clock
 
 
             let s = s + 1;
-            do Sys.wait(200);
+            do Sys.wait(1000);
             do Screen.clearScreen();
         }
 
