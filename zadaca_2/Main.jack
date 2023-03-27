@@ -1,0 +1,31 @@
+class Main
+{
+    function void main()
+    {
+        do Output.printInt(Memory.alloc(2000));
+        do Output.println();
+        do Output.printInt(Memory.alloc(2000));
+        do Output.println();
+        do Output.printInt(Memory.alloc(2000));
+        do Output.println();
+        do Output.printInt(Memory.alloc(2000));
+        do Output.println();
+        do Output.printInt(Memory.alloc(2000));
+        do Output.println();
+        do Output.printInt(Memory.alloc(2000));
+        do Output.println();
+        do Output.printInt(Memory.alloc(2000));
+        do Output.println();
+        do Output.println();
+        do Output.printString("Deallocating..");
+        do Output.println();
+        do Memory.deAlloc(14366);
+        do Memory.deAlloc(12364);
+
+        do Output.printString("Fragmenting two 2k memory bathces into one and allocating 3k to an object..");
+        do Output.println();
+        do Output.printInt(Memory.alloc(3000));
+        do Output.println();
+        return;
+    }
+}

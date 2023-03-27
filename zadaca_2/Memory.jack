@@ -1,0 +1,122 @@
+/**
+ * Memory operations library.
+ */ 
+class Memory
+{
+    static Array ram;
+    static Array freeList; //pocetak liste
+    /** Initializes memory parameters. */
+    function void init()
+    {
+        let ram = 0; // neinicijalizirano polje koje pocinje na adresi 0
+        let freeList = 2048;
+        let freeList[0] = 0;
+        let freeList[1] = 14334; //16384 - 2048 - 2
+
+        
+        return;
+    }
+
+    /** Returns the value of the main memory at the given address. */
+    function int peek(int address)
+    {
+        return ram[address];
+    }
+
+    /** Sets the value of the main memory at this address
+     *  to the given value. */
+    function void poke(int address, int value)
+    {
+        let ram[address] = value;
+        return;
+    }
+
+    /** finds and allocates from the heap a memory block of the 
+     *  specified size and returns a reference to its base address. */
+    function int alloc(int size)
+    {
+        var bool defragged;
+        var int curr, next, len, last;
+        let defragged = false;
+        let curr = freeList; //2048
+        
+        while(~(curr = 0)) //~(2048 = 0)
+        {
+            let next  = ram[curr];   //0
+            let len = ram[curr + 1]; //14334
+
+            if(~(len < (size + 2))) // len >= size + 2    14334 >= size + 2
+            {
+                let last = curr + len + 1; // 2048 + 14334 + 1
+                let ram[last - size] = size; // ram[16383 - size] npr 5 => [16378] => 5
+                let ram[last - size - 1] = 0; // [16377] => 0
+                let ram[curr + 1] = len - size - 2; // [2049] => 14327 (len)
+                return last - size + 1; //16379
+            }
+
+            let curr = next;
+
+            if(defragged & (curr = 0))
+            {
+                return -1;
+            }
+            else
+            {
+                if(curr = 0)
+                {
+                    do Memory.defrag();
+                    let defragged = true;
+                    let curr = freeList;
+                }
+            }
+        }
+        return -1;        
+    }
+
+
+    /** De-allocates the given object and frees its space. */
+    function void deAlloc(int object)
+    {
+        let ram[object - 2] = freeList;
+        let freeList = object - 2;
+
+        return;
+    }    
+
+    function void defrag()
+    {
+        var int curr, next;
+
+        let curr = freeList;
+        let next = ram[curr]; 
+
+        while(~(next = 0))
+        {
+            if(curr + ram[curr + 1] + 2 = next)
+            {
+                let ram[curr + 1] = ram[curr + 1] + ram[next + 1];
+                let ram[curr] = ram[next];
+                let ram[next + 1] = null;
+                let ram[next] = null;
+            }
+
+            let curr = next;
+            let next = ram[curr];
+        }
+
+        return;
+    }
+
+    function void memcpy(int source, int destination, int size)
+    {
+        var int i, value;
+        let i = 0;
+        while(i < size)
+        {
+            let value = Memory.peek(source + i);
+            do Memory.poke(destination + i, value);
+            let i = i + 1;
+        }
+        return;
+    }
+}

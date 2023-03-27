@@ -1,0 +1,177 @@
+/**
+ * A basic math library.
+ */
+class Math
+{
+    static Array twoToThe;
+    /** Initializes the library. */
+    function void init()
+    {
+        var int i, pow;
+        let pow = 1;
+        let i = 0;
+        let twoToThe = Array.new(16);
+        while(i < 16)
+        {
+            let twoToThe[i] = pow;
+            let pow = pow + pow;
+            let i = i + 1;
+        }
+        return;
+    }
+
+    /** Returns the absolute value of x. */
+    function int abs(int x)
+    {
+        if(x < 0)
+        {
+            return -x;
+        }
+        else
+        {
+            return x;
+        }
+    }
+
+    /** Returns the product of x and y. */
+    function int multiply(int x, int y)
+    {
+        var int i, sum, shiftedX;
+        let sum = 0;
+        let shiftedX = x;
+        let i = 0;
+
+        while(i < 16)
+        {
+            if(twoToThe[i] & y)
+            {
+                let sum = sum + shiftedX;
+            }
+            let shiftedX = shiftedX + shiftedX;
+            let i = i + 1;
+        }
+
+        return sum;
+    }
+
+    /** Returns the integer part of x/y. */
+    function int divide(int x, int y)
+    {
+        var int q, q2;
+        if( y > x)
+        {
+            return 0;
+        }
+        let q = Math.divide(x, Math.multiply(2, y));
+        let q2 = Math.multiply(2,q);
+        if((x-Math.multiply(q2, y)) < y)
+        {
+            return Math.multiply(2, q);
+        }
+        else
+        {
+            return Math.multiply(2,q) + 1;
+        }
+    }
+
+    /** Returns the integer part of the square root of x. */
+    function int sqrt(int x)
+    {
+        var int y, j, pow;
+        let j = 7;
+        let y = 0;
+
+        while(j > -1)
+        {
+            let pow = y + twoToThe[j];
+            let pow = Math.multiply(pow, pow);
+            if(~(pow > x))
+            {
+                let y = y + twoToThe[j];
+            }
+            let j = j - 1;
+        }
+        return y;
+    }
+
+    /** Returns the greater number. */
+    function int max(int a, int b)
+    {
+        if( a > b)
+        {
+            return a;
+        }
+        else
+        {
+            return b;
+        }
+    }
+
+    /** Returns the smaller number. */
+    function int min(int a, int b)
+    {
+        if( a < b)
+        {
+            return a;
+        }
+        else
+        {
+            return b;
+        }
+    }
+
+    /** modulo */
+    function int mod(int x, int m)
+    {
+        var int temp, box;
+        let temp = Math.divide(x,m);
+        if(Math.multiply(temp, m) = x)
+        {
+            return 0;
+        }
+        else
+        {
+            return (x - Math.multiply(temp, m));
+        }
+    }
+
+
+    /** Returns the power of x to the power of n */
+    function int pow(int b, int n)
+    {
+        var int a, c, r;
+        let a = 1;
+        let c = b;
+        while( n > 0)
+        {
+            let r = Math.mod(n, 2);
+            if( r = 1) 
+            {
+                let a = Math.multiply(a, c);
+            }
+            let n = Math.divide(n, 2);
+            let c = Math.multiply(c, c);
+        }
+        return a;
+    }
+
+    /** Returns the log value */
+    function int log(int x)
+    {
+        var int i;
+        let i = 0;
+        while( x > twoToThe[i])
+        {
+            let i = i + 1;
+        }
+        if(twoToThe[i] = x)
+        {
+            return i;
+        }
+        else
+        {
+            return i - 1;
+        }
+    }
+    
+}
