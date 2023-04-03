@@ -1,0 +1,99 @@
+class Tetris
+{
+    field int _x, _y, _angle;
+
+    constructor Tetris new(int x, int y, int angle)
+    {
+        let _x = x - (x & 15);
+        let _y = y - (y & 15);
+        if(_x < 16)
+        {
+            let _x = 16;
+        }
+        if(_y < 16)
+        {
+            let _y = 16;
+        }
+        if(_x > 480)
+        {
+            let _x = 480;
+        }
+        if(_y > 224)
+        {
+            let _y = 224;
+        }
+        let _angle = angle & 3;
+        do draw();
+        return this;
+    }   
+
+    method void draw()
+    {
+        do Screen.clearScreen();
+        do Screen.drawRectangle(_x + 1, _y + 1, _x + 14, _y + 14);
+
+        if(_angle & 1 = 0)
+        {
+            do Screen.drawRectangle(x + 1, y + 17, x + 14, y + 30);
+            do Screen.drawRectangle(x + 1, y - 15, x + 14, y - 2);
+    
+            if(angle & 2 = 0) {
+                do Screen.drawRectangle(x + 17, y + 17, x + 30, y + 30);
+            } else {
+                do Screen.drawRectangle(x - 15, y - 15, x - 2, y - 2);
+            }
+        } 
+        else
+        {
+            do Screen.drawRectangle(x-15, y+1, x-2, y+14);
+            do Screen.drawRectangle(x+17, y+1, x+30, y+14);
+            if (angle & 2 = 0) {
+                do Screen.drawRectangle(x-15, y+17, x-2, y+30);
+            } else {
+                do Screen.drawRectangle(x+17, y-15, x+30, y-2);
+            }
+        }
+    }
+
+    method void repeat()
+    {
+        while(~(Keyboard.keyPressed() = 140))
+        {
+            if ((Keyboard.keyPressed() = 132) & (x < 480)) 
+            {
+                let x = x + 16;
+                do draw();
+                do Sys.wait(150);
+            }
+            if ((Keyboard.keyPressed() = 130) & (x > 16)) 
+            {
+                let x = x - 16;
+                do draw();
+                do Sys.wait(150);
+            }
+            if ((Keyboard.keyPressed() = 133) & (y < 224)) 
+            {
+                let y = y + 16;
+                do draw();
+                do Sys.wait(150);
+            }
+            if ((Keyboard.keyPressed() = 131) & (y > 16)) 
+            {
+                let y = y - 16;
+                do draw();
+                do Sys.wait(150);
+            }
+            if ((Keyboard.keyPressed() = 114) | (Keyboard.keyPressed() = 82)) 
+            {
+                let angle = (angle + 1) & 3;
+                do draw();
+                do Sys.wait(250);
+            }
+        }
+        
+        do Screen.clearScreen();
+        do Sys.wait(300);
+        
+        return;
+    }
+}

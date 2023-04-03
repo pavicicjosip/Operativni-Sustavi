@@ -1,0 +1,14 @@
+class Main
+{
+    function void main()
+    {
+        do Output.printChar(90);
+        do Output.println();
+        do Output.printString("Hello World!");
+        do Output.println();
+        do Output.printInt(10);
+        do Output.println();
+        do Output.backSpace();
+        return;
+    }
+}
